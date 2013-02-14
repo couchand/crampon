@@ -5,7 +5,7 @@ class Factory
     switch tag.tag
       when 'CustomObject'
         Builder = SObject
-      when 'fields'
+      when 'fields', 'nameField'
         Builder = Field
       when 'picklistValues'
         Builder = PicklistValue
@@ -39,7 +39,11 @@ class SObject
         @sharingModel = new SharingModel value
       when 'deploymentStatus'
         @deploymentStatus = new DeploymentStatus value
-      when 'listViews', 'nameField', 'searchLayouts'
+      when 'nameField'
+        field = factory.build tag
+        field.fullName = 'Name'
+        @fields['Name'] = field
+      when 'listViews', 'searchLayouts'
         # TODO: something
         ''
 

@@ -58,6 +58,14 @@
             },
             "unique": false
         },
+        "Name": {
+            "fullName": "Name",
+            "label": "Object Name",
+            "trackHistory": false,
+            "type": {
+                "value": "Text"
+            }
+        },
         "Plural_Label__c": {
             "fullName": "Plural_Label__c",
             "externalId": false,
