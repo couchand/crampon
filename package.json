@@ -38,7 +38,8 @@
     "coffee-script": "~1.4.0",
     "grunt-contrib-coffee": "~0.4.x",
     "coffeelint": "~0.5.4",
-    "difflet": "~0.2.3"
+    "difflet": "~0.2.3",
+    "ent": "0.0.5"
   },
   "keywords": []
 }
