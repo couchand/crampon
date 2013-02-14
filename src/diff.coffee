@@ -4,13 +4,7 @@ fs = require 'fs'
 difflet = require 'difflet'
 ent = require 'ent'
 
-load = require './loader.coffee'
-node = require './nodes.coffee'
-
-module.exports = (f1, f2) ->
-  prev = node.build load f1
-  next = node.build load f2
-
+module.exports = (prev, next) ->
   tags =
     inserted: '<span class="g">'
     updated: '<span class="b">'
