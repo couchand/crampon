@@ -12,13 +12,21 @@ module.exports = function(grunt) {
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
+    coffee: {
+      compile: {
+        files: {
+          'lib/nodes.js': 'src/nodes.coffee',
+          'lib/crampon.js': 'src/crampon.coffee'
+        }
+      }
+    },
     concat: {
       options: {
         banner: '<%= banner %>',
         stripBanners: true
       },
       dist: {
-        src: ['lib/<%= pkg.name %>.js'],
+        src: ['lib/*.js'],
         dest: 'dist/<%= pkg.name %>.js'
       },
     },
@@ -68,6 +76,7 @@ module.exports = function(grunt) {
   });
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
@@ -77,6 +86,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['nodeunit']);
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['coffee', 'jshint', 'nodeunit', 'concat', 'uglify']);
 
 };
