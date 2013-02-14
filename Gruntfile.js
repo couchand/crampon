@@ -16,8 +16,9 @@ module.exports = function(grunt) {
     coffee: {
       compile: {
         files: {
-          'lib/nodes.js': 'src/nodes.coffee',
-          'lib/crampon.js': 'src/crampon.coffee'
+          'lib/crampon.js': 'src/crampon.coffee',
+          'lib/loader.js': 'src/loader.coffee',
+          'lib/nodes.js': 'src/nodes.coffee'
         }
       }
     },
