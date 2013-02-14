@@ -3,11 +3,15 @@
 class Factory
   build: (tag) ->
     switch tag.tag
+      when 'CustomObject'
+        Builder = SObject
       when 'fields'
         Builder = Field
       when 'picklistValues'
         Builder = PicklistValue
-      else throw new Error 'unknown tag type'
+      when 'actionOverrides'
+        Builder = ActionOverride
+      else throw new Error "unknown tag type #{tag.tag}"
     thing = new Builder()
     tag.getchildren().forEach (child) ->
       thing.set child.tag, child.text, child
@@ -15,8 +19,45 @@ class Factory
 
 factory = new Factory()
 
-class Field
+class SObject
   constructor: ->
+    @fields = {}
+    @actionOverrides = {}
+  set: (field, value, tag) ->
+    switch field
+    # named children
+      when 'fields'
+        field = factory.build tag
+        @fields[field.fullName] = field
+      when 'actionOverrides'
+        action = factory.build tag
+        @actionOverrides[action.actionName] = action
+
+    # smart members
+      when 'sharingModel'
+        @sharingModel = new SharingModel value
+      when 'deploymentStatus'
+        @deploymentStatus = new DeploymentStatus value
+      when 'listViews', 'nameField', 'searchLayouts'
+        # TODO: something
+        ''
+
+    # regular members
+      when 'label'
+        @label = value
+      when 'pluralLabel'
+        @pluralLabel = value
+      when 'enableActivities'
+        @enableActivities = value is 'true'
+      when 'enableFeeds'
+        @enableFeeds = value is 'true'
+      when 'enableHistory'
+        @enableHistory = value is 'true'
+      when 'enableReports'
+        @enableReports = value is 'true'
+      else throw new Error "unknown field #{field} on custom object object"
+
+class Field
   set: (field, value, tag) ->
     switch field
     # required
@@ -48,7 +89,13 @@ class Field
         @picklist = new Picklist tag
       when 'visibleLines'
         @visibleLines = parseInt value, 10
-      else throw new Error 'unknown field on field object'
+      else throw new Error "unknown field #{field} on field object"
+
+class DeploymentStatus
+  constructor: (@status) ->
+
+class SharingModel
+  constructor: (@model) ->
 
 class Type
   constructor: (@value) ->
@@ -67,6 +114,15 @@ class PicklistValue
         @fullName = value
       when 'default'
         @default = value is 'true'
-      else throw new Error 'unknown field on picklist value object'
+      else throw new Error "unknown field #{field} on picklist value object"
+
+class ActionOverride
+  set: (field, value, tag) ->
+    switch field
+      when 'actionName'
+        @actionName = value
+      when 'type'
+        @type = value
+      else throw new Error "unknown field #{field} on picklist value object"
 
 module.exports = factory
