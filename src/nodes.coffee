@@ -15,6 +15,7 @@ class Factory
     thing = new Builder()
     tag.getchildren().forEach (child) ->
       thing.set child.tag, child.text, child
+    thing.finishBuild() if thing.finishBuild
     thing
 
 factory = new Factory()
@@ -58,6 +59,8 @@ class SObject
       else throw new Error "unknown field #{field} on custom object object"
 
 class Field
+  finishBuild: ->
+    @defaultValue = @type.cast @defaultValue if @defaultValue
   set: (field, value, tag) ->
     switch field
     # required
@@ -99,6 +102,10 @@ class SharingModel
 
 class Type
   constructor: (@value) ->
+  cast: (obj) ->
+    if @value is 'Checkbox'
+      return obj is 'true'
+    obj
 
 class Picklist
   constructor: (tag) ->
