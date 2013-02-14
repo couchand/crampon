@@ -1,0 +1,130 @@
+{
+    "fields": {
+        "Data_Type__c": {
+            "fullName": "Data_Type__c",
+            "externalId": false,
+            "label": "Data Type",
+            "picklist": {
+                "sorted": false,
+                "picklistValues": [
+                    {
+                        "fullName": "Text",
+                        "default": true
+                    },
+                    {
+                        "fullName": "Auto Number",
+                        "default": false
+                    }
+                ]
+            },
+            "trackHistory": false,
+            "type": {
+                "value": "Picklist"
+            }
+        },
+        "Description__c": {
+            "fullName": "Description__c",
+            "externalId": false,
+            "label": "Description",
+            "length": 1000,
+            "trackHistory": false,
+            "type": {
+                "value": "LongTextArea"
+            },
+            "visibleLines": 7
+        },
+        "Key_Prefix__c": {
+            "fullName": "Key_Prefix__c",
+            "caseSensitive": true,
+            "externalId": false,
+            "label": "Key Prefix",
+            "length": 3,
+            "required": false,
+            "trackHistory": false,
+            "type": {
+                "value": "Text"
+            },
+            "unique": true
+        },
+        "Label__c": {
+            "fullName": "Label__c",
+            "externalId": false,
+            "label": "Label",
+            "length": 40,
+            "required": true,
+            "trackHistory": false,
+            "type": {
+                "value": "Text"
+            },
+            "unique": false
+        },
+        "Plural_Label__c": {
+            "fullName": "Plural_Label__c",
+            "externalId": false,
+            "label": "Plural Label",
+            "length": 40,
+            "required": true,
+            "trackHistory": false,
+            "type": {
+                "value": "Text"
+            },
+            "unique": false
+        },
+        "Starts_With_Vowel_Sound__c": {
+            "fullName": "Starts_With_Vowel_Sound__c",
+            "defaultValue": false,
+            "externalId": false,
+            "label": "Starts With Vowel Sound",
+            "trackHistory": false,
+            "type": {
+                "value": "Checkbox"
+            }
+        }
+    },
+    "actionOverrides": {
+        "Accept": {
+            "actionName": "Accept",
+            "type": "Default"
+        },
+        "Clone": {
+            "actionName": "Clone",
+            "type": "Default"
+        },
+        "Delete": {
+            "actionName": "Delete",
+            "type": "Default"
+        },
+        "Edit": {
+            "actionName": "Edit",
+            "type": "Default"
+        },
+        "List": {
+            "actionName": "List",
+            "type": "Default"
+        },
+        "New": {
+            "actionName": "New",
+            "type": "Default"
+        },
+        "Tab": {
+            "actionName": "Tab",
+            "type": "Default"
+        },
+        "View": {
+            "actionName": "View",
+            "type": "Default"
+        }
+    },
+    "deploymentStatus": {
+        "status": "InDevelopment"
+    },
+    "enableActivities": false,
+    "enableFeeds": false,
+    "enableHistory": true,
+    "enableReports": true,
+    "label": "SObjectType",
+    "pluralLabel": "SObjectTypes",
+    "sharingModel": {
+        "model": "ReadWrite"
+    }
+}
