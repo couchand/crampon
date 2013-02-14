@@ -19,8 +19,8 @@ normalizeArgs = (arg) ->
     throw new Error 'arguments must be of the same type'
   lfs = fs.readdirSync left
   rfs = fs.readdirSync right
-  los = (file for file in lfs where file.matches(/\.object$/))
-  ros = (file for file in rfs where file.matches(/\.object$/))
+  los = (left + '/' + file for file in lfs when file and file.match(/\.object$/))
+  ros = (right + '/' + file for file in rfs when file and file.match(/\.object$/))
   return [los, ros]
 
 objectName = (filepath) ->
@@ -47,7 +47,7 @@ listObjects = (lists) ->
       in_both[objName] = file
     else
       show_left = true
-      only_in_left[objName] file
+      only_in_left[objName] = file
   for file in lists[1]
     objName = objectName file
     if lists[0].indexOf file
