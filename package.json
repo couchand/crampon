@@ -27,6 +27,11 @@
   "scripts": {
     "test": "grunt test"
   },
+  "dependencies": {
+    "difflet": "~0.2.3",
+    "elementtree": "~0.1.5",
+    "ent": "0.0.5"
+  },
   "devDependencies": {
     "grunt-contrib-concat": "0.1.2rc6",
     "grunt-contrib-uglify": "0.1.1rc6",
@@ -34,12 +39,9 @@
     "grunt-contrib-nodeunit": "0.1.2rc6",
     "grunt-contrib-watch": "0.2.0rc5",
     "grunt": "0.4.0rc6",
-    "elementtree": "~0.1.5",
     "coffee-script": "~1.4.0",
     "grunt-contrib-coffee": "~0.4.x",
-    "coffeelint": "~0.5.4",
-    "difflet": "~0.2.3",
-    "ent": "0.0.5"
+    "coffeelint": "~0.5.4"
   },
   "keywords": []
 }
