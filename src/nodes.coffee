@@ -11,6 +11,8 @@ class Factory
         Builder = PicklistValue
       when 'actionOverrides'
         Builder = ActionOverride
+      when 'listViews'
+        Builder = ListView
       else throw new Error "unknown tag type #{tag.tag}"
     thing = new Builder()
     tag.getchildren().forEach (child) ->
@@ -24,6 +26,8 @@ class SObject
   constructor: ->
     @fields = {}
     @actionOverrides = {}
+    @listViews = {}
+
   set: (field, value, tag) ->
     switch field
     # named children
@@ -43,7 +47,10 @@ class SObject
         field = factory.build tag
         field.fullName = 'Name'
         @fields['Name'] = field
-      when 'listViews', 'searchLayouts'
+      when 'listViews'
+        view = factory.build tag
+        @listViews[view.fullName] = view
+      when 'searchLayouts'
         # TODO: something
         ''
 
@@ -134,6 +141,17 @@ class ActionOverride
         @actionName = value
       when 'type'
         @type = value
-      else throw new Error "unknown field #{field} on picklist value object"
+      else throw new Error "unknown field #{field} on action override object"
+
+class ListView
+  set: (field, value, tag) ->
+    switch field
+      when 'fullName'
+        @fullName = value
+      when 'label'
+        @label = value
+      when 'filterScope'
+        @filterScope = value
+      else throw new Error "unknown field #{field} on list view object"
 
 module.exports = factory

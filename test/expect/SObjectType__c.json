@@ -132,6 +132,13 @@
     "enableReports": true,
     "label": "SObjectType",
     "pluralLabel": "SObjectTypes",
+    "listViews": {
+        "All": {
+            "fullName": "All",
+            "filterScope": "Everything",
+            "label": "All"
+        }
+    },
     "sharingModel": {
         "model": "ReadWrite"
     }
