@@ -50,8 +50,10 @@ class SObject
       when 'listViews'
         view = factory.build tag
         @listViews[view.fullName] = view
-      when 'searchLayouts'
-        # TODO: something
+      # TODO: something
+      when 'searchLayouts', 'namedFilters', 'validationRules', 'webLinks', 'enableEnhancedLookup', 'startsWith', 'fieldSets'
+        ''
+      when 'recordTypeTrackFeedHistory', 'recordTypeTrackHistory', 'recordTypes', 'customSettingsType', 'customSettingsVisibility'
         ''
 
     # regular members
@@ -59,6 +61,8 @@ class SObject
         @label = value
       when 'pluralLabel'
         @pluralLabel = value
+      when 'description'
+        @description = value
       when 'enableActivities'
         @enableActivities = value is 'true'
       when 'enableFeeds'
@@ -87,22 +91,41 @@ class Field
         @trackHistory = value is 'true'
 
     # common
+      when 'scale'
+        @scale = value
+      when 'precision'
+        @precision = value
+      when 'description'
+        @description = value
+      when 'inlineHelpText'
+        @inlineHelpText = value
       when 'externalId'
         @externalId = value is 'true'
       when 'required'
         @required = value is 'true'
       when 'unique'
         @unique = value is 'true'
+      when 'formula'
+        @formula = value is 'true'
+      when 'formulaTreatBlanksAs'
+        @formulaTreatBlanksAs = value is 'true'
 
     # others
       when 'caseSensitive'
         @caseSensitive = value is 'true'
       when 'defaultValue'
         @defaultValue = value
+      when 'trackFeedHistory'
+        @trackFeedHistory = value is 'true'
       when 'picklist'
         @picklist = new Picklist tag
       when 'visibleLines'
         @visibleLines = parseInt value, 10
+        # TODO: something
+      when 'deleteConstraint', 'referenceTo', 'relationshipLabel', 'relationshipName', 'relationshipOrder', 'writeRequiresMasterRead'
+          ''
+      when 'summarizedField', 'summaryFilterItems', 'summaryForeignKey', 'summaryOperation', 'displayFormat'
+          ''
       else throw new Error "unknown field #{field} on field object"
 
 class DeploymentStatus
@@ -152,6 +175,9 @@ class ListView
         @label = value
       when 'filterScope'
         @filterScope = value
+      # TODO: something
+      when 'columns', 'filters', 'sharedTo', 'booleanFilter'
+        ''
       else throw new Error "unknown field #{field} on list view object"
 
 module.exports = factory
