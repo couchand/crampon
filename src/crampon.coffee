@@ -1,10 +1,10 @@
 #  crampon
 #  https://github.com/couchand/crampon
-# 
+#
 #  Copyright (c) 2013 Andrew Couch
 #  Licensed under the MIT license.
 
-'use strict';
+'use strict'
 
 exports.awesome = ->
   'awesome'
