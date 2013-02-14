@@ -36,7 +36,8 @@
     "grunt": "0.4.0rc6",
     "elementtree": "~0.1.5",
     "coffee-script": "~1.4.0",
-    "grunt-contrib-coffee": "~0.4.x"
+    "grunt-contrib-coffee": "~0.4.x",
+    "coffeelint": "~0.5.4"
   },
   "keywords": []
 }
