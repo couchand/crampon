@@ -7,7 +7,7 @@ class Factory
         Builder = Field
       when 'picklistValues'
         Builder = PicklistValue
-      else throw 'unknown tag type'
+      else throw new Error 'unknown tag type'
     thing = new Builder()
     tag.getchildren().forEach (child) ->
       thing.set child.tag, child.text, child
@@ -48,7 +48,7 @@ class Field
         @picklist = new Picklist tag
       when 'visibleLines'
         @visibleLines = parseInt value, 10
-      else throw 'unknown field on field object'
+      else throw new Error 'unknown field on field object'
 
 class Type
   constructor: (@value) ->
@@ -67,6 +67,6 @@ class PicklistValue
         @fullName = value
       when 'default'
         @default = value is 'true'
-      else throw 'unknown field on picklist value object'
+      else throw new Error 'unknown field on picklist value object'
 
 module.exports = factory
