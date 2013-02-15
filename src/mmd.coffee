@@ -13,8 +13,12 @@ class NodeType
   addValue: (val) ->
     @values.push val unless @values.indexOf val
 
-  addChild: (name) ->
-    @children[name] = new NodeType name
+  getChild: (name) ->
+    this_type = @children[name]
+    if this_type?
+      this_type.plural on
+    else
+      @children[name] = new NodeType name
 
 analyze = (et, continuing) ->
   root = new NodeType 'root'
@@ -24,12 +28,7 @@ analyze = (et, continuing) ->
 
 analyzeNode = (parent_type, node) ->
   children = node.getchildren()
-  this_type = parent_type.children[node.tag]
-
-  if this_type?
-    this_type.plural on
-  else
-    this_type = parent_type.addChild node.tag
+  this_type = parent_type.getChild node.tag
 
   if children.length is 0
     this_type.addValue node.text
