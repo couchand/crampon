@@ -16,9 +16,10 @@ class NodeType
   addChild: (name) ->
     @children[name] = new NodeType name
 
-analyze = (et) ->
+analyze = (et, continuing) ->
   root = new NodeType 'root'
-  analyzeNode root, et.getroot()
+  root.children = continuing if continuing?
+  analyzeNode root, et
   root.children
 
 analyzeNode = (parent_type, node) ->
