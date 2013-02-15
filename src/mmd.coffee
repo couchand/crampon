@@ -13,7 +13,7 @@ class NodeType
   isLeaf: -> @values.length > 0
 
   addValue: (val) ->
-    @values.push val unless @values.indexOf val > -1
+    @values.push val unless @values.indexOf(val) > -1
 
   getChild: (name) ->
     if @children[name]?
