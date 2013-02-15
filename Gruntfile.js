@@ -21,6 +21,7 @@ module.exports = function(grunt) {
           'lib/infer.js': 'src/infer.coffee',
           'lib/server.js': 'src/server.coffee',
           'lib/crampon.js': 'src/crampon.coffee',
+          'lib/compiler.js': 'src/compiler.coffee',
           'lib/loader.js': 'src/loader.coffee',
           'lib/nodes.js': 'src/nodes.coffee'
         }
