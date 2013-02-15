@@ -27,10 +27,9 @@ class NodeType
       @addValue node.text
     else
       @getChild(child).analyze child for child in children
+    @
 
 analyze = (et) ->
-  root = new NodeType et
-  root.analyze et
-  root
+  new NodeType(et).analyze et
 
 module.exports = analyze
