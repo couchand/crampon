@@ -7,9 +7,7 @@ class NodeType
     @values = []
     @children = {}
 
-  plural: ->
-    @isPlural = yes
-
+  plural: -> @isPlural = yes
   isLeaf: -> @values.length > 0
 
   addValue: (val) ->
@@ -25,7 +23,6 @@ class NodeType
 
   analyze: (node) ->
     children = node.getchildren()
-
     if children.length is 0
       @addValue node.text
     else
