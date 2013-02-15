@@ -16,6 +16,10 @@ module.exports = function(grunt) {
     coffee: {
       compile: {
         files: {
+          'lib/mmd.js': 'src/mmd.coffee',
+          'lib/diff.js': 'src/diff.coffee',
+          'lib/infer.js': 'src/infer.coffee',
+          'lib/server.js': 'src/server.coffee',
           'lib/crampon.js': 'src/crampon.coffee',
           'lib/loader.js': 'src/loader.coffee',
           'lib/nodes.js': 'src/nodes.coffee'
