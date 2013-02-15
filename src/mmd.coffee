@@ -23,17 +23,17 @@ class NodeType
       @children[name] = new NodeType node
     @children[name]
 
+  analyze: (node) ->
+    children = node.getchildren()
+
+    if children.length is 0
+      @addValue node.text
+    else
+      @getChild(child).analyze child for child in children
+
 analyze = (et) ->
   root = new NodeType et
-  analyzeNode root, et
+  root.analyze et
   root
-
-analyzeNode = (this_type, node) ->
-  children = node.getchildren()
-
-  if children.length is 0
-    this_type.addValue node.text
-  else
-    analyzeNode this_type.getChild(child), child for child in children
 
 module.exports = analyze
