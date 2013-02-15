@@ -5,9 +5,9 @@ http = require 'http'
 fs = require 'fs'
 url = require 'url'
 
-load = require './loader.coffee'
-node = require './nodes.coffee'
-diff = require './diff.coffee'
+load = require '../src/loader.coffee'
+node = require '../src/nodes.coffee'
+diff = require '../src/diff.coffee'
 
 normalizeArgs = (arg) ->
   left = arg[1]
