@@ -1,3 +1,4 @@
+#!/usr/local/bin/coffee
 # inference command line interface
 
 l = require './loader.coffee'
