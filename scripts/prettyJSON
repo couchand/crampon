@@ -1,0 +1,14 @@
+#!/usr/local/bin/coffee
+# inference command line interface
+
+fs = require 'fs'
+
+main = (argv) ->
+  if !argv[1]?
+    console.log "Usage: #{argv[0]} FILE"
+    return
+
+  json = JSON.parse fs.readFileSync(argv[1]).toString()
+  console.log JSON.stringify json, null, 2
+
+main process.argv.slice 1
