@@ -101,11 +101,11 @@ findFile = (name, dirs) ->
   [l, r]
 
 main = (argv) ->
-  dirs = normalizeArgs argv
-
   if !argv[1]? or !argv[2]?
     console.log "Usage: coffee server.coffee OLD_DIR NEW_DIR"
     return
+
+  dirs = normalizeArgs argv
 
   server = http.createServer (req, res) ->
     console.log 'ping'
