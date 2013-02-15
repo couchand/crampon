@@ -11,7 +11,7 @@ class NodeType
     @isPlural = yes
 
   addValue: (val) ->
-    @values.push val unless @values.indexOf val
+    @values.push val unless @values.indexOf val > -1
 
   getChild: (name) ->
     if @children[name]?
