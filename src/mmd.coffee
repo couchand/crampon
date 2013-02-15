@@ -14,9 +14,8 @@ class NodeType
     @values.push val unless @values.indexOf val
 
   getChild: (name) ->
-    this_type = @children[name]
-    if this_type?
-      this_type.plural on
+    if @children[name]?
+      @children[name].plural on
     else
       @children[name] = new NodeType name
 
