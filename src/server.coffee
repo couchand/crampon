@@ -1,3 +1,4 @@
+#!/usr/local/bin/coffee
 # diff server
 
 http = require 'http'
