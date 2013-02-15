@@ -20,9 +20,8 @@ class NodeType
       @children[name] = new NodeType name
     @children[name]
 
-analyze = (et, continuing) ->
+analyze = (et) ->
   root = new NodeType 'root'
-  root.children = continuing if continuing?
   analyzeNode root, et
   root.children
 

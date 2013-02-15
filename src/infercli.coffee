@@ -1,18 +1,18 @@
-# metadata inference
+# inference command line interface
 
 l = require './loader.coffee'
-mmd = require './mmd.coffee'
+i = require './infer.coffee'
 
 main = (argv) ->
   if !argv[1]?
     console.log "Usage: coffee infer.coffee FILE [ FILE ... ]"
     return
 
-  object_types = {}
+  sherlock = new i.Inferrer()
 
   for file in argv.slice 1
-    object_types = mmd l(file), object_types
+    sherlock.analyze l file
 
-  console.log JSON.stringify object_types
+  console.log JSON.stringify sherlock.object_types
 
 main process.argv.slice 1
