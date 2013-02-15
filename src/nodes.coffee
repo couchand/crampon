@@ -123,9 +123,9 @@ class Field
         @visibleLines = parseInt value, 10
         # TODO: something
       when 'deleteConstraint', 'referenceTo', 'relationshipLabel', 'relationshipName', 'relationshipOrder', 'writeRequiresMasterRead'
-          ''
+        ''
       when 'summarizedField', 'summaryFilterItems', 'summaryForeignKey', 'summaryOperation', 'displayFormat'
-          ''
+        ''
       else throw new Error "unknown field #{field} on field object"
 
 class DeploymentStatus
