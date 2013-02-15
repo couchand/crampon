@@ -103,7 +103,7 @@ findFile = (name, dirs) ->
 
 main = (argv) ->
   if !argv[1]? or !argv[2]?
-    console.log "Usage: coffee server.coffee OLD_DIR NEW_DIR"
+    console.log "Usage: #{argv[0]} OLD_DIR NEW_DIR"
     return
 
   dirs = normalizeArgs argv

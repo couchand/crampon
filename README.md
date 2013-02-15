@@ -23,14 +23,14 @@ Assuming you have all your dependencies handled (a simple
 go ahead and fire up the server with:
 
 ```bash
-coffee src/server.coffee PRIOR CURRENT
+scripts/server PRIOR CURRENT
 ```
 
 Where `PRIOR` and `CURRENT` are directories containing
 two versions of object metadata.  Perhaps you would execute:
 
 ```bash
-coffee src/server.coffee production/src/objects staging/src/objects
+scripts/server production/src/objects staging/src/objects
 ```
 
 Warning
