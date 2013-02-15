@@ -18,6 +18,7 @@ class NodeType
       @children[name].plural on
     else
       @children[name] = new NodeType name
+    @children[name]
 
 analyze = (et, continuing) ->
   root = new NodeType 'root'
