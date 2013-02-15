@@ -1,8 +1,8 @@
 #!/usr/local/bin/coffee
 # inference command line interface
 
-l = require './loader.coffee'
-i = require './infer.coffee'
+l = require '../src/loader.coffee'
+i = require '../src/infer.coffee'
 
 main = (argv) ->
   if !argv[1]?
