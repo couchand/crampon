@@ -9,5 +9,5 @@
   "undef": true,
   "boss": true,
   "eqnull": true,
-  "predef": ["module", "exports", "require"]
+  "predef": ["module", "exports", "require", "console", "process"]
 }
