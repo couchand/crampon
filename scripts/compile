@@ -1,0 +1,16 @@
+#!/usr/local/bin/coffee
+# compile command line interface
+
+fs = require 'fs'
+
+{ compile: c } = require '../src/compiler.coffee'
+
+main = (argv) ->
+  if !argv[1]?
+    console.log "Usage: #{argv[0]} JSONFILE"
+    return
+
+  json = JSON.parse fs.readFileSync(argv[1]).toString()
+  console.log c json
+
+main process.argv.slice 1
