@@ -28,13 +28,12 @@ analyze = (et) ->
   root.children
 
 analyzeNode = (parent_type, node) ->
-  children = node.getchildren()
   this_type = parent_type.getChild node.tag
+  children = node.getchildren()
 
   if children.length is 0
     this_type.addValue node.text
   else
-    for child in children
-      analyzeNode this_type, child
+    analyzeNode this_type, child for child in children
 
 module.exports = analyze
