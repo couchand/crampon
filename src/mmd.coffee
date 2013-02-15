@@ -11,7 +11,7 @@ class NodeType
     @isPlural = yes
 
   addValue: (val) ->
-    @values.push val
+    @values.push val unless @values.indexOf val
 
   addChild: (name) ->
     @children[name] = new NodeType name
