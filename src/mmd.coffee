@@ -10,6 +10,8 @@ class NodeType
   plural: ->
     @isPlural = yes
 
+  isLeaf: -> @values.length > 0
+
   addValue: (val) ->
     @values.push val unless @values.indexOf val > -1
 
