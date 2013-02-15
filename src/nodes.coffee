@@ -1,10 +1,16 @@
 'use strict'
 
+# when a tag comes up with child nodes, decide which one
+# to create to hold those children
 class Factory
   build: (tag) ->
     switch tag.tag
       when 'CustomObject'
         Builder = SObject
+
+# note the class names are the tag names, but
+#  - capitalized
+#  - trailing 's' removed
       when 'fields', 'nameField'
         Builder = Field
       when 'picklistValues'
@@ -13,24 +19,40 @@ class Factory
         Builder = ActionOverride
       when 'listViews'
         Builder = ListView
+
+# shouldn't happen if our training set is large
       else throw new Error "unknown tag type #{tag.tag}"
+
     thing = new Builder()
+
     tag.getchildren().forEach (child) ->
       thing.set child.tag, child.text, child
+
+# this is a particular special case...
     thing.finishBuild() if thing.finishBuild
     thing
 
 factory = new Factory()
 
+# each tag type that has child nodes has a class
+# this is one top-level class
 class SObject
   constructor: ->
+
+# maps of child elements by their name
+# only elements that have themselves children
+# (and thus are classes)
     @fields = {}
     @actionOverrides = {}
     @listViews = {}
 
+# primary method for filling up data
   set: (field, value, tag) ->
     switch field
     # named children
+
+# we will use the fact that the name field always
+# ends with 'Name' i guess
       when 'fields'
         field = factory.build tag
         @fields[field.fullName] = field
@@ -39,10 +61,15 @@ class SObject
         @actionOverrides[action.actionName] = action
 
     # smart members
+# we'll want some sort of typing system for all fields,
+# not just these, but these will be easy, since they
+# have so few distinct values over the whole training set.
       when 'sharingModel'
         @sharingModel = new SharingModel value
       when 'deploymentStatus'
         @deploymentStatus = new DeploymentStatus value
+
+# an interesting special case.  how prevalent is this?
       when 'nameField'
         field = factory.build tag
         field.fullName = 'Name'
@@ -51,12 +78,16 @@ class SObject
         view = factory.build tag
         @listViews[view.fullName] = view
       # TODO: something
+
+# we'll decide what to do after training
       when 'searchLayouts', 'namedFilters', 'validationRules', 'webLinks', 'enableEnhancedLookup', 'startsWith', 'fieldSets'
         ''
       when 'recordTypeTrackFeedHistory', 'recordTypeTrackHistory', 'recordTypes', 'customSettingsType', 'customSettingsVisibility'
         ''
 
     # regular members
+
+# easy peasy
       when 'label'
         @label = value
       when 'pluralLabel'
@@ -83,6 +114,8 @@ class Field
         @fullName = value
       when 'label'
         @label = value
+
+# again, training will be key here
       when 'type'
         @type = new Type value
       when 'length'
@@ -141,6 +174,7 @@ class Type
       return obj is 'true'
     obj
 
+# it will be interesting to see how this all shakes out.
 class Picklist
   constructor: (tag) ->
     @sorted = tag.find('./sorted').text is 'true'
@@ -148,6 +182,7 @@ class Picklist
     tag.findall('./picklistValues').forEach (plv) ->
       plvs.push factory.build plv
 
+# these should all compile with no trouble at all
 class PicklistValue
   set: (field, value, tag) ->
     switch field
