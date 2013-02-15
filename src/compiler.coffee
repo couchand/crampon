@@ -2,7 +2,7 @@
 # builds a parser for xml from its inferred structure
 
 get_inodes = (node) ->
-  return [] if node.isLeaf()
+  return [] if node.children?.length is 0
   inodes = [node]
   for name, child of node.children
     child_inodes = get_inodes child
@@ -44,7 +44,7 @@ builderize = (tag_name) ->
 
 make_builder = (node) ->
   indent = "      "
-  field = node.tag
+  field = node.name
   builder = builderize field
   "#{indent}when '#{field}'\n#{indent}  Builder = #{builder}"
 
