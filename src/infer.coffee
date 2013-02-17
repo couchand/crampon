@@ -6,6 +6,9 @@ class NodeType
     @isPlural = node.isPlural
   isLeaf: -> @values.length > 0
   isInode: -> @values.length is 0
+  merge: (other) ->
+    throw new Error "cannot merge nodes of different types: #{@name}, #{other.name}" if @name isnt other.name
+    @isPlural ||= other.isPlural
 
 class LeafType extends NodeType
   constructor: (node) ->
@@ -14,6 +17,10 @@ class LeafType extends NodeType
     @addValue val for val in node.values
   addValue: (val) ->
     @values.push val unless @values.indexOf(val) > -1
+  merge: (other) ->
+    super other
+    @addValue value for value in other.values
+    @
 
 class InodeType extends NodeType
   constructor: (node) ->
@@ -22,6 +29,10 @@ class InodeType extends NodeType
     @addChild child for name, child of node.children
   addChild: (node) ->
     @children.push node.name unless @children.indexOf(node.name) > -1
+  merge_inode: (other) ->
+    super other
+    @addChild child for child in other.children
+    @
 
 class NodeWalker
   constructor: (node) ->
@@ -43,19 +54,6 @@ class NodeWalker
       leaves.push.apply leaves, child_leaves if child_leaves.length
     leaves
 
-  merge: (left, right) ->
-    throw new Error "cannot merge nodes of different types: #{left.name}, #{right.name}" if left.name isnt right.name
-    left.isPlural = left.isPlural or right.isPlural
-
-  merge_leaf: (left, right) ->
-    @merge left, right
-    left.addValue value for value in right.values
-    left
-
-  merge_inode: (left, right) ->
-    @merge left, right
-    left.addChild child for child in right.children
-
   reset_inodes: (node, dictionary) ->
     return if !@is_inode node
     for name, child of node.children
@@ -70,12 +68,12 @@ class Inferrer
     n = new NodeWalker()
     for inode in n.get_inodes d
       if @inodes_by_name[inode.name]
-        @inodes_by_name[inode.name] = n.merge_inode @inodes_by_name[inode.name], inode
+        @inodes_by_name[inode.name] = @inodes_by_name[inode.name].merge inode
       else
         @inodes_by_name[inode.name] = new InodeType inode
     for leaf in n.get_leaves d
       if @leaves_by_name[leaf.name]
-        @leaves_by_name[leaf.name] = n.merge_leaf @leaves_by_name[leaf.name], leaf
+        @leaves_by_name[leaf.name] = @leaves_by_name[leaf.name].merge leaf
       else
         @leaves_by_name[leaf.name] = new LeafType leaf
 
