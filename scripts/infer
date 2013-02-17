@@ -4,6 +4,7 @@
 l = require '../src/loader.coffee'
 m = require '../src/mmd.coffee'
 o = require '../src/observe.coffee'
+i = require '../src/infer.coffee'
 
 main = (argv) ->
   if !argv[1]?
@@ -11,10 +12,11 @@ main = (argv) ->
     return
 
   watson = new o.Organizer()
+  sherlock = new i.Inferrer()
 
   for file in argv.slice 1
     watson.analyze m l file
 
-  console.log JSON.stringify { inodes: watson.inodes_by_name, leaves: watson.leaves_by_name }, null, 2
+  console.log JSON.stringify sherlock.analyze({ inodes: watson.inodes_by_name, leaves: watson.leaves_by_name }), null, 2
 
 main process.argv.slice 1
