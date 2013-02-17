@@ -29,7 +29,7 @@ class InodeType extends NodeType
     @addChild child for name, child of node.children
   addChild: (node) ->
     @children.push node.name unless @children.indexOf(node.name) > -1
-  merge_inode: (other) ->
+  merge: (other) ->
     super other
     @addChild child for child in other.children
     @
