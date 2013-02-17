@@ -3,14 +3,14 @@
 
 l = require '../src/loader.coffee'
 m = require '../src/mmd.coffee'
-i = require '../src/infer.coffee'
+o = require '../src/observe.coffee'
 
 main = (argv) ->
   if !argv[1]?
     console.log "Usage: #{argv[0]} FILE [ FILE ... ]"
     return
 
-  watson = new i.Organizer()
+  watson = new o.Organizer()
 
   for file in argv.slice 1
     watson.analyze m l file
