@@ -10,11 +10,11 @@ main = (argv) ->
     console.log "Usage: #{argv[0]} FILE [ FILE ... ]"
     return
 
-  sherlock = new i.Inferrer()
+  watson = new i.Organizer()
 
   for file in argv.slice 1
-    sherlock.analyze m l file
+    watson.analyze m l file
 
-  console.log JSON.stringify { inodes: sherlock.inodes_by_name, leaves: sherlock.leaves_by_name }, null, 2
+  console.log JSON.stringify { inodes: watson.inodes_by_name, leaves: watson.leaves_by_name }, null, 2
 
 main process.argv.slice 1

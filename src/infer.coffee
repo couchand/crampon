@@ -1,4 +1,4 @@
-# metadata inference
+# metadata organization
 
 class NodeType
   constructor: (node) ->
@@ -51,7 +51,7 @@ class NodeWalker
       leaves.push.apply leaves, child_leaves if child_leaves.length
     leaves
 
-class Inferrer
+class Organizer
   constructor: ->
     @inodes_by_name = {}
     @leaves_by_name = {}
@@ -70,6 +70,6 @@ class Inferrer
         @leaves_by_name[leaf.name] = new LeafType leaf
 
 module.exports =
-  Inferrer: Inferrer
+  Organizer: Organizer
   NodeType: NodeType
   NodeWalker: NodeWalker
