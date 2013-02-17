@@ -54,11 +54,6 @@ class NodeWalker
       leaves.push.apply leaves, child_leaves if child_leaves.length
     leaves
 
-  reset_inodes: (node, dictionary) ->
-    return if !@is_inode node
-    for name, child of node.children
-      node.children[name] = dictionary[name]
-
 class Inferrer
   constructor: ->
     @inodes_by_name = {}
