@@ -34,14 +34,13 @@ builderize = (tag_name) ->
   singular = tag_name.replace /s$/, ''
   singular[0].toUpperCase() + singular[1..]
 
-make_builder = (node) ->
+make_builder = (name, node) ->
   indent = "      "
-  field = node.name
-  builder = builderize field
-  "#{indent}when '#{field}'\n#{indent}  Builder = #{builder}"
+  builder = builderize name
+  "#{indent}when '#{name}'\n#{indent}  Builder = #{builder}"
 
 builders = (nodes) ->
-  (make_builder node for name, node of nodes).join '\n'
+  (make_builder name, node for name, node of nodes).join '\n'
 
 factory = (inodes, leaves) ->
   """
