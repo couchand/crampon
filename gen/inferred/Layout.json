@@ -1,0 +1,88 @@
+{
+  "inodes": {
+    "Layout": {
+      "layoutSections": true,
+      "showEmailCheckbox": false,
+      "showRunAssignmentRulesCheckbox": false,
+      "showSubmitAndAttachButton": false
+    },
+    "layoutSections": {
+      "customLabel": true,
+      "detailHeading": true,
+      "editHeading": true,
+      "label": true,
+      "layoutColumns": true,
+      "style": true
+    },
+    "relatedLists": {
+      "fields": true,
+      "relatedList": true,
+      "sortField": true,
+      "sortOrder": true,
+      "excludeButtons": true
+    },
+    "summaryLayout": {
+      "masterLabel": false,
+      "sizeX": false,
+      "sizeY": false,
+      "summaryLayoutStyle": false
+    },
+    "miniLayout": {
+      "fields": true,
+      "relatedLists": true
+    },
+    "layoutColumns": {
+      "layoutItems": true
+    },
+    "layoutItems": {
+      "behavior": true,
+      "field": true
+    }
+  },
+  "leaves": {
+    "customLabel": "boolean",
+    "detailHeading": "boolean",
+    "editHeading": "boolean",
+    "label": "string",
+    "layoutColumns": "string",
+    "style": [
+      "TwoColumnsTopToBottom",
+      "CustomLinks",
+      "TwoColumnsLeftToRight",
+      "OneColumn"
+    ],
+    "showEmailCheckbox": "boolean",
+    "showRunAssignmentRulesCheckbox": "boolean",
+    "showSubmitAndAttachButton": "boolean",
+    "excludeButtons": "string",
+    "headers": [
+      "PersonalTagging",
+      "PublicTagging"
+    ],
+    "fields": "string",
+    "relatedList": "string",
+    "sortField": "string",
+    "sortOrder": [
+      "Asc",
+      "Desc"
+    ],
+    "relatedObjects": "string",
+    "masterLabel": "string",
+    "sizeX": "number",
+    "sizeY": "number",
+    "summaryLayoutStyle": [
+      "Default"
+    ],
+    "customButtons": "string",
+    "emailDefault": "boolean",
+    "runAssignmentRulesDefault": "boolean",
+    "behavior": [
+      "Required",
+      "Edit",
+      "Readonly"
+    ],
+    "field": "string",
+    "showSolutionSection": "boolean",
+    "multilineLayoutFields": "string"
+  }
+}

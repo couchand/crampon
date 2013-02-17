@@ -1,0 +1,21 @@
+{
+  "inodes": {
+    "CustomLabels": {
+      "labels": true
+    },
+    "labels": {
+      "fullName": true,
+      "language": true,
+      "protected": true,
+      "shortDescription": true,
+      "value": true
+    }
+  },
+  "leaves": {
+    "fullName": "string",
+    "language": "string",
+    "protected": "boolean",
+    "shortDescription": "string",
+    "value": "string"
+  }
+}

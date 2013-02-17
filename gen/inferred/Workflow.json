@@ -1,0 +1,98 @@
+{
+  "inodes": {
+    "Workflow": {
+      "fieldUpdates": true,
+      "rules": true
+    },
+    "fieldUpdates": {
+      "fullName": true,
+      "description": true,
+      "field": true,
+      "formula": true,
+      "name": true,
+      "notifyAssignee": true,
+      "operation": true,
+      "protected": true
+    },
+    "rules": {
+      "fullName": true,
+      "actions": true,
+      "active": true,
+      "criteriaItems": true,
+      "description": true,
+      "triggerType": true
+    },
+    "actions": {
+      "name": true,
+      "type": true
+    },
+    "criteriaItems": {
+      "field": true,
+      "operation": true
+    },
+    "alerts": {
+      "fullName": true,
+      "description": true,
+      "protected": true,
+      "recipients": true,
+      "senderType": true,
+      "template": true
+    },
+    "recipients": {
+      "recipient": true,
+      "type": true
+    }
+  },
+  "leaves": {
+    "fullName": "string",
+    "description": "string",
+    "field": "string",
+    "formula": "string",
+    "name": "string",
+    "notifyAssignee": "boolean",
+    "operation": [
+      "Formula",
+      "notEqual",
+      "Literal",
+      "equals",
+      "greaterOrEqual",
+      "lessThan",
+      "contains",
+      "LookupValue",
+      "greaterThan",
+      "includes",
+      "startsWith"
+    ],
+    "protected": "boolean",
+    "type": [
+      "FieldUpdate",
+      "user",
+      "accountOwner",
+      "Alert",
+      "owner",
+      "creator",
+      "userLookup",
+      "contactLookup"
+    ],
+    "active": "boolean",
+    "triggerType": [
+      "onCreateOnly",
+      "onCreateOrTriggeringUpdate",
+      "onAllChanges"
+    ],
+    "recipient": "string",
+    "senderType": [
+      "CurrentUser"
+    ],
+    "template": "string",
+    "literalValue": "string",
+    "value": "string",
+    "booleanFilter": "string",
+    "Workflow": "string",
+    "lookupValue": "string",
+    "lookupValueType": [
+      "RecordType"
+    ],
+    "ccEmails": "string"
+  }
+}

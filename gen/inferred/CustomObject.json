@@ -1,0 +1,332 @@
+{
+  "inodes": {
+    "CustomObject": {
+      "actionOverrides": true,
+      "deploymentStatus": false,
+      "description": false,
+      "enableActivities": false,
+      "enableEnhancedLookup": false,
+      "enableFeeds": false,
+      "enableHistory": false,
+      "enableReports": false,
+      "fields": true,
+      "label": false,
+      "listViews": true,
+      "nameField": false,
+      "pluralLabel": false,
+      "searchLayouts": false,
+      "sharingModel": false
+    },
+    "actionOverrides": {
+      "actionName": false,
+      "type": false
+    },
+    "fields": {
+      "fullName": false,
+      "deleteConstraint": false,
+      "description": false,
+      "externalId": false,
+      "label": false,
+      "referenceTo": false,
+      "relationshipName": false,
+      "required": false,
+      "type": false,
+      "formula": false,
+      "formulaTreatBlanksAs": false,
+      "unique": false
+    },
+    "listViews": {
+      "fullName": false,
+      "columns": true,
+      "filterScope": false,
+      "label": false
+    },
+    "nameField": {
+      "label": false,
+      "type": false
+    },
+    "picklist": {
+      "picklistValues": true,
+      "sorted": false
+    },
+    "picklistValues": {
+      "fullName": false,
+      "default": false
+    },
+    "summaryFilterItems": {
+      "field": false,
+      "operation": false,
+      "value": false
+    },
+    "filters": {
+      "field": false,
+      "operation": false,
+      "value": false
+    },
+    "sharedTo": {
+      "role": true,
+      "roleAndSubordinates": true,
+      "group": true
+    },
+    "namedFilters": {
+      "fullName": false,
+      "active": false,
+      "field": false,
+      "filterItems": true,
+      "isOptional": false,
+      "name": false,
+      "sourceObject": false,
+      "booleanFilter": false
+    },
+    "filterItems": {
+      "field": false,
+      "operation": false,
+      "value": false
+    },
+    "recordTypes": {
+      "fullName": false,
+      "active": false,
+      "description": false,
+      "label": false,
+      "picklistValues": true
+    },
+    "values": {
+      "fullName": false,
+      "default": false
+    },
+    "validationRules": {
+      "fullName": false,
+      "active": false,
+      "description": false,
+      "errorConditionFormula": false,
+      "errorDisplayField": false,
+      "errorMessage": false
+    },
+    "webLinks": {
+      "fullName": false,
+      "availability": false,
+      "description": false,
+      "displayType": false,
+      "hasMenubar": false,
+      "hasScrollbars": false,
+      "hasToolbar": false,
+      "height": false,
+      "isResizable": false,
+      "linkType": false,
+      "masterLabel": false,
+      "openType": false,
+      "position": false,
+      "protected": false,
+      "showsLocation": false,
+      "showsStatus": false,
+      "url": false,
+      "width": false
+    },
+    "searchLayouts": {
+      "customTabListAdditionalFields": true,
+      "excludedStandardButtons": true,
+      "lookupDialogsAdditionalFields": true,
+      "searchFilterFields": true,
+      "searchResultsAdditionalFields": true
+    },
+    "businessProcesses": {
+      "fullName": false,
+      "description": false,
+      "isActive": false,
+      "values": true
+    },
+    "fieldSets": {
+      "fullName": false,
+      "description": false,
+      "displayedFields": true,
+      "label": false
+    },
+    "displayedFields": {
+      "field": false,
+      "isRequired": false
+    }
+  },
+  "leaves": {
+    "actionName": [
+      "Accept",
+      "Clone",
+      "Delete",
+      "Edit",
+      "List",
+      "New",
+      "Tab",
+      "View"
+    ],
+    "type": "string",
+    "deploymentStatus": [
+      "Deployed",
+      "InDevelopment"
+    ],
+    "description": "string",
+    "enableActivities": "boolean",
+    "enableEnhancedLookup": "boolean",
+    "enableFeeds": "boolean",
+    "enableHistory": "boolean",
+    "enableReports": "boolean",
+    "fullName": "string",
+    "deleteConstraint": [
+      "SetNull"
+    ],
+    "externalId": "boolean",
+    "label": "string",
+    "referenceTo": "string",
+    "relationshipName": "string",
+    "required": "boolean",
+    "formula": "string",
+    "formulaTreatBlanksAs": [
+      "BlankAsZero"
+    ],
+    "unique": "boolean",
+    "columns": "string",
+    "filterScope": [
+      "Everything",
+      "Mine",
+      "Team",
+      "Delegated",
+      "Queue"
+    ],
+    "pluralLabel": "string",
+    "searchLayouts": "string",
+    "sharingModel": [
+      "ReadWrite",
+      "ControlledByParent",
+      "Private",
+      "Read"
+    ],
+    "default": "boolean",
+    "sorted": "boolean",
+    "relationshipLabel": "string",
+    "trackFeedHistory": "boolean",
+    "trackHistory": "boolean",
+    "inlineHelpText": "string",
+    "length": "number",
+    "precision": "number",
+    "scale": "number",
+    "summarizedField": "string",
+    "field": "string",
+    "operation": [
+      "equals",
+      "greaterOrEqual",
+      "lessOrEqual",
+      "notEqual",
+      "lessThan",
+      "contains",
+      "greaterThan",
+      "notContain",
+      "startsWith"
+    ],
+    "value": "string",
+    "summaryForeignKey": "string",
+    "summaryOperation": [
+      "sum",
+      "count",
+      "max",
+      "min"
+    ],
+    "visibleLines": "number",
+    "defaultValue": "string",
+    "displayFormat": "string",
+    "role": "string",
+    "roleAndSubordinates": "string",
+    "group": "string",
+    "booleanFilter": "string",
+    "active": "boolean",
+    "isOptional": "boolean",
+    "name": "string",
+    "sourceObject": [
+      "Account"
+    ],
+    "recordTypeTrackFeedHistory": "boolean",
+    "recordTypeTrackHistory": "boolean",
+    "picklist": "string",
+    "errorConditionFormula": "string",
+    "errorDisplayField": "string",
+    "errorMessage": "string",
+    "availability": [
+      "online"
+    ],
+    "displayType": [
+      "link",
+      "button",
+      "massActionButton"
+    ],
+    "hasMenubar": "boolean",
+    "hasScrollbars": "boolean",
+    "hasToolbar": "boolean",
+    "height": "number",
+    "isResizable": "boolean",
+    "linkType": [
+      "url",
+      "page"
+    ],
+    "masterLabel": "string",
+    "openType": [
+      "newWindow",
+      "noSidebar",
+      "replace",
+      "sidebar"
+    ],
+    "position": [
+      "none",
+      "topLeft"
+    ],
+    "protected": "boolean",
+    "showsLocation": "boolean",
+    "showsStatus": "boolean",
+    "url": "string",
+    "width": "number",
+    "CustomObject": "string",
+    "controllingFieldValues": "string",
+    "controllingField": "string",
+    "customTabListAdditionalFields": "string",
+    "excludedStandardButtons": [
+      "New",
+      "Accept",
+      "ChangeOwner"
+    ],
+    "lookupDialogsAdditionalFields": "string",
+    "searchFilterFields": "string",
+    "searchResultsAdditionalFields": "string",
+    "relationshipOrder": "number",
+    "writeRequiresMasterRead": "boolean",
+    "lookupPhoneDialogsAdditionalFields": "string",
+    "isActive": "boolean",
+    "cssExposed": "boolean",
+    "closed": "boolean",
+    "queue": "string",
+    "businessProcess": "string",
+    "requireRowSelection": "boolean",
+    "caseSensitive": "boolean",
+    "page": "string",
+    "customSettingsType": [
+      "List"
+    ],
+    "customSettingsVisibility": [
+      "Public"
+    ],
+    "color": "string",
+    "converted": "boolean",
+    "sharedTo": "string",
+    "isRequired": "boolean",
+    "forecastCategory": [
+      "Pipeline",
+      "Closed",
+      "Omitted"
+    ],
+    "probability": "number",
+    "won": "boolean",
+    "reverseRole": "string",
+    "allowEmail": "boolean",
+    "reviewed": "boolean",
+    "highPriority": "boolean",
+    "startsWith": [
+      "Vowel"
+    ],
+    "listViewButtons": "string"
+  }
+}
