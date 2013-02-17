@@ -1,9 +1,5 @@
 # metadata inference
 
-class Inode
-  constructor: ->
-    @children = {}
-
 both = (left, right) ->
   all = {}
   all[k] = v for k, v of left
@@ -21,13 +17,12 @@ class Inferrer
     @out.leaves[name] = @inferType node.values for name, node of @src.leaves
     @out
   buildInode: (node) ->
-    inode = new Inode()
+    inode = {}
     for child in node.children
-      inode.children[child] = @src.all[child].isPlural
+      inode[child] = @src.all[child].isPlural
     inode
   inferType: (values) ->
     'string'
 
 module.exports =
-  Inode: Inode
   Inferrer: Inferrer
