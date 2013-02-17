@@ -16,17 +16,20 @@ class NodeType
   getChild: (node) ->
     @children[node.tag] ?= new NodeType node
 
+  addChildren: (children) ->
+    seen = {}
+    for child_node in children
+      child = @getChild child_node
+      child.plural on if seen[child.name]
+      seen[child.name] = yes
+      child.analyze child_node
+
   analyze: (node) ->
     children = node.getchildren()
     if children.length is 0
       @addValue node.text
     else
-      seen = {}
-      for child_node in children
-        child = @getChild child_node
-        child.plural on if seen[child.name]
-        seen[child.name] = yes
-        child.analyze child_node
+      @addChildren children
     @
 
 analyze = (et) ->
