@@ -14,19 +14,19 @@ class NodeType
     @values.push val unless @values.indexOf(val) > -1
 
   getChild: (node) ->
-    name = node.tag
-    if @children[name]?
-      @children[name].plural on
-    else
-      @children[name] = new NodeType node
-    @children[name]
+    @children[node.tag] ?= new NodeType node
 
   analyze: (node) ->
     children = node.getchildren()
     if children.length is 0
       @addValue node.text
     else
-      @getChild(child).analyze child for child in children
+      seen = {}
+      for child_node in children
+        child = @getChild child_node
+        child.plural on if seen[child.name]
+        seen[child.name] = yes
+        child.analyze child_node
     @
 
 analyze = (et) ->
