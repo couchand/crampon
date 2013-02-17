@@ -51,6 +51,9 @@ set_method_header = ->
     set: (field, value, tag) ->
       switch field
   """
+set_method_footer = (obj) ->
+  indent = '      '
+  "#{indent}else throw new Error \"unknown field \#{field} on #{obj} object\""
 
 builderize = (tag_name) ->
   singular = tag_name.replace /s$/, ''
@@ -85,8 +88,29 @@ make_child_map_setter = (child, name_field) ->
   #{indent}  @#{child}[thing.#{name_field}] = thing
   """
 
-make_child_map_setters = (children) ->
-  (make_child_map_setter name, plural for name, plural of children when typeof plural is 'string').join '\n'
+make_child_setters = (children) ->
+  setters = []
+  for name, plural of children
+    if typeof plural is 'string'
+      setters.push make_child_map_setter name, plural
+    else
+      setters.push make_child_simple_setter name, plural
+  setters.join '\n'
+
+dictionaries = {}
+
+fieldType = (field) ->
+  dictionaries.leaves[field]
+
+make_child_simple_setter = (child) ->
+  indent = '      '
+  switch fieldType(child)
+    when 'number'
+      "#{indent}when '#{child}'\n#{indent}  @#{child} = parseInt value, 10"
+    when 'boolean'
+      "#{indent}when '#{child}'\n#{indent}  @#{child} = value is 'true'"
+    else
+      "#{indent}when '#{child}'\n#{indent}  @#{child} = value"
 
 named_elements = (name, node) ->
   """
@@ -94,7 +118,8 @@ named_elements = (name, node) ->
   #{make_child_maps node}
 
   #{set_method_header()}
-  #{make_child_map_setters node}
+  #{make_child_setters node}
+  #{set_method_footer name}
   """
 
 make_class = (name, node) ->
@@ -107,6 +132,7 @@ classes = (inodes, leaves) ->
   (make_class name, node for name, node of inodes).join '\n\n'
 
 compile = (dicts) ->
+  dictionaries = dicts
   """
   #{factory(dicts.inodes, dicts.leaves)}
   #{classes(dicts.inodes, dicts.leaves)}
