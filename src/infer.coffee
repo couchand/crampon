@@ -27,7 +27,7 @@ class Inferrer
     all = (val.trim() for val in values).join ''
     return 'boolean' if all.match /^(true|false)+$/
     return 'number' if all.match /^[0-9]+$/
-    return 'enum' if values.length < @threshold
+    return values if values.length < @threshold and all.match /^[a-zA-Z]+$/
     'string'
 
 module.exports =
