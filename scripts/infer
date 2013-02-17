@@ -15,7 +15,6 @@ main = (argv) ->
   for file in argv.slice 1
     sherlock.analyze m l file
 
-  console.log JSON.stringify sherlock.inodes_by_name, null, 2
-  console.log JSON.stringify sherlock.leaves_by_name, null, 2
+  console.log JSON.stringify { inodes: sherlock.inodes_by_name, leaves: sherlock.leaves_by_name }, null, 2
 
 main process.argv.slice 1
