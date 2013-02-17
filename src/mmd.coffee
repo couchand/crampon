@@ -34,6 +34,4 @@ class NodeType
 analyze = (et) ->
   new NodeType(et).analyze et
 
-analyze.NodeType = NodeType
-
 module.exports = analyze
