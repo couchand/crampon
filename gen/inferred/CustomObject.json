@@ -1,7 +1,7 @@
 {
   "inodes": {
     "CustomObject": {
-      "actionOverrides": true,
+      "actionOverrides": "actionName",
       "deploymentStatus": false,
       "description": false,
       "enableActivities": false,
@@ -9,9 +9,9 @@
       "enableFeeds": false,
       "enableHistory": false,
       "enableReports": false,
-      "fields": true,
+      "fields": "fullName",
       "label": false,
-      "listViews": true,
+      "listViews": "fullName",
       "nameField": false,
       "pluralLabel": false,
       "searchLayouts": false,
@@ -46,7 +46,7 @@
       "type": false
     },
     "picklist": {
-      "picklistValues": true,
+      "picklistValues": "fullName",
       "sorted": false
     },
     "picklistValues": {
@@ -88,7 +88,7 @@
       "active": false,
       "description": false,
       "label": false,
-      "picklistValues": true
+      "picklistValues": "fullName"
     },
     "values": {
       "fullName": false,
@@ -133,7 +133,7 @@
       "fullName": false,
       "description": false,
       "isActive": false,
-      "values": true
+      "values": "fullName"
     },
     "fieldSets": {
       "fullName": false,
@@ -238,9 +238,7 @@
     "active": "boolean",
     "isOptional": "boolean",
     "name": "string",
-    "sourceObject": [
-      "Account"
-    ],
+    "sourceObject": "string",
     "recordTypeTrackFeedHistory": "boolean",
     "recordTypeTrackHistory": "boolean",
     "picklist": "string",
@@ -262,14 +260,16 @@
     "isResizable": "boolean",
     "linkType": [
       "url",
-      "page"
+      "page",
+      "javascript"
     ],
     "masterLabel": "string",
     "openType": [
       "newWindow",
       "noSidebar",
       "replace",
-      "sidebar"
+      "sidebar",
+      "onClickJavaScript"
     ],
     "position": [
       "none",
@@ -304,10 +304,12 @@
     "caseSensitive": "boolean",
     "page": "string",
     "customSettingsType": [
-      "List"
+      "List",
+      "Hierarchy"
     ],
     "customSettingsVisibility": [
-      "Public"
+      "Public",
+      "Protected"
     ],
     "color": "string",
     "converted": "boolean",
@@ -327,6 +329,12 @@
     "startsWith": [
       "Vowel"
     ],
-    "listViewButtons": "string"
+    "listViewButtons": "string",
+    "content": "string",
+    "skipRecordTypeSelect": "boolean",
+    "language": "string",
+    "valueField": "string",
+    "infoMessage": "string",
+    "searchResultsCustomButtons": "string"
   }
 }

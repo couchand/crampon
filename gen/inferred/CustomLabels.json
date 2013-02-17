@@ -1,7 +1,7 @@
 {
   "inodes": {
     "CustomLabels": {
-      "labels": true
+      "labels": "fullName"
     },
     "labels": {
       "fullName": false,
@@ -16,6 +16,7 @@
     "language": "string",
     "protected": "boolean",
     "shortDescription": "string",
-    "value": "string"
+    "value": "string",
+    "categories": "string"
   }
 }

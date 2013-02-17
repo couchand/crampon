@@ -1,8 +1,8 @@
 {
   "inodes": {
     "Workflow": {
-      "fieldUpdates": true,
-      "rules": true
+      "fieldUpdates": "fullName",
+      "rules": "fullName"
     },
     "fieldUpdates": {
       "fullName": false,
@@ -41,6 +41,12 @@
     "recipients": {
       "recipient": false,
       "type": false
+    },
+    "workflowTimeTriggers": {
+      "actions": true,
+      "offsetFromField": false,
+      "timeLength": false,
+      "workflowTimeTriggerUnit": false
     }
   },
   "leaves": {
@@ -93,6 +99,11 @@
     "lookupValueType": [
       "RecordType"
     ],
-    "ccEmails": "string"
+    "ccEmails": "string",
+    "offsetFromField": "string",
+    "timeLength": "number",
+    "workflowTimeTriggerUnit": [
+      "Days"
+    ]
   }
 }
