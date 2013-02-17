@@ -14,7 +14,7 @@ class NodeType
     @values.push val unless @values.indexOf(val) > -1
 
   getChild: (node) ->
-    @children[node.tag] ?= new NodeType node
+    (@children[node.tag] ?= new NodeType node).analyze node
 
   addChildren: (children) ->
     seen = {}
@@ -22,7 +22,6 @@ class NodeType
       child = @getChild child_node
       child.plural on if seen[child.name]
       seen[child.name] = yes
-      child.analyze child_node
 
   analyze: (node) ->
     children = node.getchildren()
