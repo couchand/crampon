@@ -74,11 +74,28 @@ factory = (inodes, leaves) ->
 make_child_map = (child) ->
   "    @#{child} = {}"
 
+make_child_maps = (children) ->
+  (make_child_map name for name, plural of children when typeof plural is 'string').join '\n'
+
+make_child_map_setter = (child, name_field) ->
+  indent = '      '
+  """
+  #{indent}when '#{child}'
+  #{indent}  thing = factory.build tag
+  #{indent}  @#{child}[thing.#{name_field}] = thing
+  """
+
+make_child_map_setters = (children) ->
+  (make_child_map_setter name, plural for name, plural of children when typeof plural is 'string').join '\n'
+
 named_elements = (name, node) ->
   """
   #{named_elements_header()}
-  """
   #{make_child_maps node}
+
+  #{set_method_header()}
+  #{make_child_map_setters node}
+  """
 
 make_class = (name, node) ->
   """
@@ -87,7 +104,7 @@ make_class = (name, node) ->
   """
 
 classes = (inodes, leaves) ->
-  (make_class name, node for name, node of inodes).join '\n'
+  (make_class name, node for name, node of inodes).join '\n\n'
 
 compile = (dicts) ->
   """
