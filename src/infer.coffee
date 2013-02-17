@@ -4,16 +4,22 @@ class NodeType
   constructor: (node) ->
     @name = node.name
     @isPlural = node.isPlural
-    @values = []
-    @addValue val for val in node.values
-    @children = []
-    @addChild child for name, child of node.children
-
   isLeaf: -> @values.length > 0
   isInode: -> @values.length is 0
 
+class LeafType extends NodeType
+  constructor: (node) ->
+    super node
+    @values = []
+    @addValue val for val in node.values
   addValue: (val) ->
     @values.push val unless @values.indexOf(val) > -1
+
+class InodeType extends NodeType
+  constructor: (node) ->
+    super node
+    @children = []
+    @addChild child for name, child of node.children
   addChild: (node) ->
     @children.push node.name unless @children.indexOf(node.name) > -1
 
@@ -66,12 +72,12 @@ class Inferrer
       if @inodes_by_name[inode.name]
         @inodes_by_name[inode.name] = n.merge_inode inode, @inodes_by_name[inode.name]
       else
-        @inodes_by_name[inode.name] = new NodeType inode
+        @inodes_by_name[inode.name] = new InodeType inode
     for leaf in n.get_leaves d
       if @leaves_by_name[leaf.name]
         @leaves_by_name[leaf.name] = n.merge_leaf leaf, @leaves_by_name[leaf.name]
       else
-        @leaves_by_name[leaf.name] = new NodeType leaf
+        @leaves_by_name[leaf.name] = new LeafType leaf
 
 module.exports =
   Inferrer: Inferrer
