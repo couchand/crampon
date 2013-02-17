@@ -7,18 +7,18 @@
       "showSubmitAndAttachButton": false
     },
     "layoutSections": {
-      "customLabel": true,
-      "detailHeading": true,
-      "editHeading": true,
-      "label": true,
+      "customLabel": false,
+      "detailHeading": false,
+      "editHeading": false,
+      "label": false,
       "layoutColumns": true,
-      "style": true
+      "style": false
     },
     "relatedLists": {
       "fields": true,
-      "relatedList": true,
-      "sortField": true,
-      "sortOrder": true,
+      "relatedList": false,
+      "sortField": false,
+      "sortOrder": false,
       "excludeButtons": true
     },
     "summaryLayout": {
@@ -35,8 +35,8 @@
       "layoutItems": true
     },
     "layoutItems": {
-      "behavior": true,
-      "field": true
+      "behavior": false,
+      "field": false
     }
   },
   "leaves": {

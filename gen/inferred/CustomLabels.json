@@ -4,11 +4,11 @@
       "labels": true
     },
     "labels": {
-      "fullName": true,
-      "language": true,
-      "protected": true,
-      "shortDescription": true,
-      "value": true
+      "fullName": false,
+      "language": false,
+      "protected": false,
+      "shortDescription": false,
+      "value": false
     }
   },
   "leaves": {

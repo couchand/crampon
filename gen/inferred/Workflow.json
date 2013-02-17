@@ -5,42 +5,42 @@
       "rules": true
     },
     "fieldUpdates": {
-      "fullName": true,
-      "description": true,
-      "field": true,
-      "formula": true,
-      "name": true,
-      "notifyAssignee": true,
-      "operation": true,
-      "protected": true
+      "fullName": false,
+      "description": false,
+      "field": false,
+      "formula": false,
+      "name": false,
+      "notifyAssignee": false,
+      "operation": false,
+      "protected": false
     },
     "rules": {
-      "fullName": true,
+      "fullName": false,
       "actions": true,
-      "active": true,
+      "active": false,
       "criteriaItems": true,
-      "description": true,
-      "triggerType": true
+      "description": false,
+      "triggerType": false
     },
     "actions": {
-      "name": true,
-      "type": true
+      "name": false,
+      "type": false
     },
     "criteriaItems": {
-      "field": true,
-      "operation": true
+      "field": false,
+      "operation": false
     },
     "alerts": {
-      "fullName": true,
-      "description": true,
-      "protected": true,
+      "fullName": false,
+      "description": false,
+      "protected": false,
       "recipients": true,
-      "senderType": true,
-      "template": true
+      "senderType": false,
+      "template": false
     },
     "recipients": {
-      "recipient": true,
-      "type": true
+      "recipient": false,
+      "type": false
     }
   },
   "leaves": {
