@@ -70,12 +70,12 @@ class Inferrer
     n = new NodeWalker()
     for inode in n.get_inodes d
       if @inodes_by_name[inode.name]
-        @inodes_by_name[inode.name] = n.merge_inode inode, @inodes_by_name[inode.name]
+        @inodes_by_name[inode.name] = n.merge_inode @inodes_by_name[inode.name], inode
       else
         @inodes_by_name[inode.name] = new InodeType inode
     for leaf in n.get_leaves d
       if @leaves_by_name[leaf.name]
-        @leaves_by_name[leaf.name] = n.merge_leaf leaf, @leaves_by_name[leaf.name]
+        @leaves_by_name[leaf.name] = n.merge_leaf @leaves_by_name[leaf.name], leaf
       else
         @leaves_by_name[leaf.name] = new LeafType leaf
 
