@@ -41,18 +41,17 @@ make_builder = (node) ->
   "#{indent}when '#{field}'\n#{indent}  Builder = #{builder}"
 
 builders = (nodes) ->
-  (make_builder node for node in nodes).join '\n'
+  (make_builder node for name, node of nodes).join '\n'
 
-factory = (nodes) ->
+factory = (inodes, leaves) ->
   """
   #{header()}
-  #{builders(nodes)}
+  #{builders(inodes)}
   #{footer()}
   """
 
-compile = (node) ->
-  inodes = get_inodes(node)
-  factory(inodes)
+compile = (dicts) ->
+  factory(dicts.inodes, dicts.leaves)
 
 module.exports =
   compile: compile

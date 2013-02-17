@@ -1,0 +1,267 @@
+{
+  "inodes": {
+    "CustomObject": {
+      "name": "CustomObject",
+      "isPlural": false,
+      "children": [
+        "actionOverrides",
+        "deploymentStatus",
+        "enableActivities",
+        "enableFeeds",
+        "enableHistory",
+        "enableReports",
+        "fields",
+        "label",
+        "listViews",
+        "nameField",
+        "pluralLabel",
+        "searchLayouts",
+        "sharingModel"
+      ]
+    },
+    "actionOverrides": {
+      "name": "actionOverrides",
+      "isPlural": true,
+      "children": [
+        "actionName",
+        "type"
+      ]
+    },
+    "fields": {
+      "name": "fields",
+      "isPlural": true,
+      "children": [
+        "fullName",
+        "externalId",
+        "label",
+        "picklist",
+        "trackHistory",
+        "type",
+        "length",
+        "visibleLines",
+        "caseSensitive",
+        "required",
+        "unique"
+      ]
+    },
+    "picklist": {
+      "name": "picklist",
+      "isPlural": false,
+      "children": [
+        "picklistValues",
+        "sorted"
+      ]
+    },
+    "picklistValues": {
+      "name": "picklistValues",
+      "isPlural": true,
+      "children": [
+        "fullName",
+        "default"
+      ]
+    },
+    "listViews": {
+      "name": "listViews",
+      "isPlural": false,
+      "children": [
+        "fullName",
+        "filterScope",
+        "label"
+      ]
+    },
+    "nameField": {
+      "name": "nameField",
+      "isPlural": false,
+      "children": [
+        "label",
+        "trackHistory",
+        "type"
+      ]
+    }
+  },
+  "leaves": {
+    "actionName": {
+      "name": "actionName",
+      "isPlural": true,
+      "values": [
+        "Accept",
+        "Clone",
+        "Delete",
+        "Edit",
+        "List",
+        "New",
+        "Tab",
+        "View"
+      ]
+    },
+    "type": {
+      "name": "type",
+      "isPlural": true,
+      "values": [
+        "Default",
+        "Picklist",
+        "LongTextArea",
+        "Text"
+      ]
+    },
+    "deploymentStatus": {
+      "name": "deploymentStatus",
+      "isPlural": false,
+      "values": [
+        "InDevelopment"
+      ]
+    },
+    "enableActivities": {
+      "name": "enableActivities",
+      "isPlural": false,
+      "values": [
+        "false"
+      ]
+    },
+    "enableFeeds": {
+      "name": "enableFeeds",
+      "isPlural": false,
+      "values": [
+        "false"
+      ]
+    },
+    "enableHistory": {
+      "name": "enableHistory",
+      "isPlural": false,
+      "values": [
+        "true"
+      ]
+    },
+    "enableReports": {
+      "name": "enableReports",
+      "isPlural": false,
+      "values": [
+        "true"
+      ]
+    },
+    "fullName": {
+      "name": "fullName",
+      "isPlural": true,
+      "values": [
+        "Data_Type__c",
+        "Description__c",
+        "Key_Prefix__c",
+        "Label__c",
+        "Plural_Label__c",
+        "Text is sweet",
+        "Something else entirely",
+        "All"
+      ]
+    },
+    "externalId": {
+      "name": "externalId",
+      "isPlural": true,
+      "values": [
+        "false"
+      ]
+    },
+    "label": {
+      "name": "label",
+      "isPlural": true,
+      "values": [
+        "This is the coolest type of thing.",
+        "Description",
+        "sObject Prefix",
+        "Object Label",
+        "Plural Label",
+        "sObject Type",
+        "All sObject Types",
+        "sObject Type Name"
+      ]
+    },
+    "default": {
+      "name": "default",
+      "isPlural": true,
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    "sorted": {
+      "name": "sorted",
+      "isPlural": false,
+      "values": [
+        "false"
+      ]
+    },
+    "trackHistory": {
+      "name": "trackHistory",
+      "isPlural": true,
+      "values": [
+        "false",
+        "true"
+      ]
+    },
+    "length": {
+      "name": "length",
+      "isPlural": true,
+      "values": [
+        "1000",
+        "4",
+        "40"
+      ]
+    },
+    "visibleLines": {
+      "name": "visibleLines",
+      "isPlural": false,
+      "values": [
+        "7"
+      ]
+    },
+    "caseSensitive": {
+      "name": "caseSensitive",
+      "isPlural": false,
+      "values": [
+        "true"
+      ]
+    },
+    "required": {
+      "name": "required",
+      "isPlural": true,
+      "values": [
+        "true"
+      ]
+    },
+    "unique": {
+      "name": "unique",
+      "isPlural": true,
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    "filterScope": {
+      "name": "filterScope",
+      "isPlural": false,
+      "values": [
+        "Everything"
+      ]
+    },
+    "pluralLabel": {
+      "name": "pluralLabel",
+      "isPlural": false,
+      "values": [
+        "sObject Types"
+      ]
+    },
+    "searchLayouts": {
+      "name": "searchLayouts",
+      "isPlural": false,
+      "values": [
+        ""
+      ]
+    },
+    "sharingModel": {
+      "name": "sharingModel",
+      "isPlural": false,
+      "values": [
+        "ReadWrite"
+      ]
+    }
+  }
+}
