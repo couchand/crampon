@@ -4,9 +4,6 @@ class Inode
   constructor: ->
     @children = {}
 
-class Leaf
-  constructor: (@type) ->
-
 both = (left, right) ->
   all = {}
   all[k] = v for k, v of left
@@ -21,19 +18,16 @@ class Inferrer
       inodes: {}
       leaves: {}
     @out.inodes[name] = @buildInode node for name, node of @src.inodes
-    @out.leaves[name] = @buildLeaf node for name, node of @src.leaves
+    @out.leaves[name] = @inferType node.values for name, node of @src.leaves
     @out
   buildInode: (node) ->
     inode = new Inode()
     for child in node.children
       inode.children[child] = @src.all[child].isPlural
     inode
-  buildLeaf: (node) ->
-    new Leaf @inferType node.values
   inferType: (values) ->
     'string'
 
 module.exports =
   Inode: Inode
-  Leaf: Leaf
   Inferrer: Inferrer
