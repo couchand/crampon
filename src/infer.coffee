@@ -6,6 +6,11 @@ both = (left, right) ->
   all[k] = v for k, v of right
   all
 
+name_field = (obj) ->
+  return no unless obj and obj.children
+  for name in obj.children
+    return name if name.match /Name$/
+
 class Inferrer
   constructor: (enum_threshold) ->
     @threshold = enum_threshold or 12
@@ -21,7 +26,8 @@ class Inferrer
   buildInode: (node) ->
     inode = {}
     for child in node.children
-      inode[child] = @src.all[child].isPlural
+      name = name_field @src.inodes[child]
+      inode[child] = if name then name else @src.all[child].isPlural
     inode
   inferType: (values) ->
     all = (val.trim() for val in values).join ''
