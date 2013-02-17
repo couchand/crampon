@@ -7,6 +7,8 @@ both = (left, right) ->
   all
 
 class Inferrer
+  constructor: (enum_threshold) ->
+    @threshold = enum_threshold or 12
   analyze: (dictionaries) ->
     @src = dictionaries
     @src.all = both @src.inodes, @src.leaves
@@ -22,6 +24,10 @@ class Inferrer
       inode[child] = @src.all[child].isPlural
     inode
   inferType: (values) ->
+    all = (val.trim() for val in values).join ''
+    return 'boolean' if all.match /^(true|false)+$/
+    return 'number' if all.match /^[0-9]+$/
+    return 'enum' if values.length < @threshold
     'string'
 
 module.exports =
