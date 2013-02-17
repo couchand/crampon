@@ -35,9 +35,6 @@ class InodeType extends NodeType
     @
 
 class NodeWalker
-  constructor: (node) ->
-    @node = node
-
   get_inodes: (node) ->
     return [] if node.isLeaf()
     inodes = [node]
