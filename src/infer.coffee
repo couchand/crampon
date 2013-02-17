@@ -1,14 +1,28 @@
 # metadata inference
 
-mmd = require './mmd.coffee'
+class NodeType
+  constructor: (node) ->
+    @name = node.name
+    @isPlural = node.isPlural
+    @values = []
+    @addValue val for val in node.values
+    @children = []
+    @addChild child for name, child of node.children
+
+  isLeaf: -> @values.length > 0
+  isInode: -> @values.length is 0
+
+  addValue: (val) ->
+    @values.push val unless @values.indexOf(val) > -1
+  addChild: (node) ->
+    @children.push node.name unless @children.indexOf(node.name) > -1
 
 class NodeWalker
   constructor: (node) ->
     @node = node
 
-  is_inode: (node) -> node.values.length is 0
   get_inodes: (node) ->
-    return [] if !@is_inode node
+    return [] if node.isLeaf()
     inodes = [node]
     for name, child of node.children
       child_inodes = @get_inodes child
@@ -16,27 +30,25 @@ class NodeWalker
     inodes
 
   get_leaves: (node) ->
-    return [node] if !@is_inode node
-    inodes = []
+    return [node] if node.isLeaf()
+    leaves = []
     for name, child of node.children
       child_leaves = @get_leaves child
-      inodes.push.apply inodes, child_leaves if child_leaves.length
+      leaves.push.apply leaves, child_leaves if child_leaves.length
+    leaves
 
   merge: (left, right) ->
-    throw new Error 'cannot merge nodes of different types' if left.name isnt right.name
-    combined = new mmd.NodeType left.name
-    combined.isPlural = left.isPlural or right.isPlural
-    combined
+    throw new Error "cannot merge nodes of different types: #{left.name}, #{right.name}" if left.name isnt right.name
+    left.isPlural = left.isPlural or right.isPlural
 
   merge_leaf: (left, right) ->
-    combined = @merge left, right
-    combined.addValue value for value in left.values
-    combined.addValue value for value in right.values
+    @merge left, right
+    left.addValue value for value in right.values
+    left
 
   merge_inode: (left, right) ->
-    combined = @merge left, right
-    combined.children[child.name] = true for child in left.children
-    combined.children[child.name] = true for child in right.children
+    @merge left, right
+    left.addChild child for child in right.children
 
   reset_inodes: (node, dictionary) ->
     return if !@is_inode node
@@ -45,21 +57,23 @@ class NodeWalker
 
 class Inferrer
   constructor: ->
-    @object_types = {}
+    @inodes_by_name = {}
+    @leaves_by_name = {}
 
-  analyze: (xml) ->
-    d = mmd xml
+  analyze: (d) ->
     n = new NodeWalker()
-    inodes = n.get_inodes d
-    inodes_by_name = {}
-    for inode in inodes
-      if inodes_by_name[inode.name]?
-        inodes_by_name[inode.name] = merge inode, inodes_by_name[inode.name]
+    for inode in n.get_inodes d
+      if @inodes_by_name[inode.name]
+        @inodes_by_name[inode.name] = n.merge_inode inode, @inodes_by_name[inode.name]
       else
-        inodes_by_name[inode.name] = inode
-    n.reset_inodes d, inodes_by_name
-    d
+        @inodes_by_name[inode.name] = new NodeType inode
+    for leaf in n.get_leaves d
+      if @leaves_by_name[leaf.name]
+        @leaves_by_name[leaf.name] = n.merge_leaf leaf, @leaves_by_name[leaf.name]
+      else
+        @leaves_by_name[leaf.name] = new NodeType leaf
 
 module.exports =
   Inferrer: Inferrer
+  NodeType: NodeType
   NodeWalker: NodeWalker

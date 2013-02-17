@@ -2,6 +2,7 @@
 # inference command line interface
 
 l = require '../src/loader.coffee'
+m = require '../src/mmd.coffee'
 i = require '../src/infer.coffee'
 
 main = (argv) ->
@@ -12,8 +13,9 @@ main = (argv) ->
   sherlock = new i.Inferrer()
 
   for file in argv.slice 1
-    sherlock.analyze l file
+    sherlock.analyze m l file
 
-  console.log JSON.stringify sherlock.object_types
+  console.log JSON.stringify sherlock.inodes_by_name, null, 2
+  console.log JSON.stringify sherlock.leaves_by_name, null, 2
 
 main process.argv.slice 1
